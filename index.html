@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App 🧠</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/quiz-favicon.svg" />
+  </head>
+  <body>
+    <!-- EKRAN STARTOWY -->
+    <div id="screen-start" class="screen active">
+      <div class="screen-content">
+        <div class="app-logo">🧠</div>
+        <h1>Quiz Interaktywny</h1>
+        <p class="subtitle">Sprawdź swoją wiedzę!</p>
+
+        <div class="settings-card">
+          <div class="setting-group">
+            <label for="categorySelect">Kategoria:</label>
+            <select id="categorySelect">
+              <option value="">🎲 Losowa kategoria</option>
+              <option value="9">🌍 Wiedza ogólna</option>
+              <option value="17">🔬 Nauka i natura</option>
+              <option value="21">🏅 Sport</option>
+              <option value="23">📜 Historia</option>
+              <option value="27">🎨 Sztuka i literatura</option>
+              <option value="11">🎬 Film</option>
+              <option value="12">🎵 Muzyka</option>
+              <option value="15">🎮 Gry wideo</option>
+              <option value="18">💻 Informatyka</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="difficultySelect">Poziom trudności:</label>
+            <select id="difficultySelect">
+              <option value="">🎲 Losowy</option>
+              <option value="easy">🟢 Łatwy</option>
+              <option value="medium">🟡 Średni</option>
+              <option value="hard">🔴 Trudny</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="questionCount">Liczba pytań:</label>
+            <select id="questionCount">
+              <option value="5">5 pytań</option>
+              <option value="10" selected>10 pytań</option>
+              <option value="15">15 pytań</option>
+              <option value="20">20 pytań</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="startBtn" class="btn btn-primary btn-large">
+          🚀 Rozpocznij Quiz!
+        </button>
+
+        <div id="historySection" class="history-section hidden">
+          <h3>📊 Ostatnie wyniki:</h3>
+          <div id="historyList"></div>
+          <button id="clearHistoryBtn" class="btn btn-ghost">
+            🗑️ Wyczyść historię
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EKRAN ŁADOWANIA -->
+    <div id="screen-loading" class="screen">
+      <div class="screen-content">
+        <div class="spinner-large"></div>
+        <h2>Przygotowanie pytań...</h2>
+        <p>Pobieranie z bazy wiedzy</p>
+      </div>
+    </div>
+
+    <!-- EKRAN PYTANIA -->
+    <div id="screen-question" class="screen">
+      <div class="quiz-header">
+        <div class="quiz-progress-info">
+          <span id="questionNum">Pytanie 1/10</span>
+          <span id="scoreDisplay">Wynik: 0</span>
+        </div>
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="screen-content">
+        <div class="timer-container">
+          <div id="timerCircle" class="timer-circle">
+            <span id="timerText">15</span>
+          </div>
+        </div>
+
+        <div id="categoryBadge" class="category-badge"></div>
+
+        <h2 id="questionText" class="question-text"></h2>
+
+        <div id="answersGrid" class="answers-grid"></div>
+      </div>
+    </div>
+
+    <!-- EKRAN WYNIKÓW -->
+    <div id="screen-results" class="screen">
+      <div class="screen-content">
+        <div id="resultEmoji" class="result-emoji"></div>
+        <h2 id="resultTitle" class="result-title"></h2>
+        <p id="resultSubtitle" class="result-subtitle"></p>
+
+        <div class="result-score-card">
+          <div class="score-item">
+            <span class="score-value" id="finalScore">0</span>
+            <span class="score-label">Punktów</span>
+          </div>
+          <div class="score-divider"></div>
+          <div class="score-item">
+            <span class="score-value" id="finalPercent">0%</span>
+            <span class="score-label">Poprawnych</span>
+          </div>
+          <div class="score-divider"></div>
+          <div class="score-item">
+            <span class="score-value" id="finalTime">0s</span>
+            <span class="score-label">Łączny czas</span>
+          </div>
+        </div>
+
+        <div id="answersSummary" class="answers-summary"></div>
+
+        <div class="result-buttons">
+          <button id="playAgainBtn" class="btn btn-primary">
+            🔄 Zagraj ponownie
+          </button>
+          <button id="goHomeBtn" class="btn btn-secondary">
+            🏠 Menu główne
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
